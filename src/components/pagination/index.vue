@@ -67,10 +67,10 @@ export default {
     },
     methods: {
         handleSizeChange(val) {
-            this.$emit('doPagination', { page: this.currentPage, limit: val });
+            this.$emit('pagination', { page: this.currentPage, limit: val });
         },
         handleCurrentChange(val) {
-            this.$emit('doPagination', { page: val, limit: this.pageSize });
+            this.$emit('pagination', { page: val, limit: this.pageSize });
         }
     }
 };
