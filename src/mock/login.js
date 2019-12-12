@@ -97,7 +97,6 @@ export default {
             message: 'get permission success',
             ...permissionData
         };
-        console.log(response);
         return response;
     }
 };

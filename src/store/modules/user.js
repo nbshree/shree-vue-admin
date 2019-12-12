@@ -88,7 +88,6 @@ const user = {
             });
         },
         getUserPermission({ commit }, { roles }) {
-            console.log(roles);
             return new Promise(async (resolve, reject) => {
                 try {
                     const response = await permission(roles);

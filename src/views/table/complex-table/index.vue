@@ -63,7 +63,6 @@
       </el-table-column>
       <el-table-column :label="$t('table.importance')" width="80px">
         <template slot-scope="scope">
-<!--          <icon v-for="n in +scope.row.importance" :key="n" :name="star" ></icon>-->
           <icon v-for="n in +scope.row.importance" :key="n" class="meta-item__icon" name="star"/>
         </template>
       </el-table-column>

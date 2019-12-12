@@ -58,8 +58,6 @@ const permission = {
                 if (store.getters.debugMode) {
                     routers = asyncRouterMap;
                 } else {
-                  console.log(asyncRouterMap);
-                  console.log(permissionCodeList);
                     routers = filterAsyncRouter(asyncRouterMap, permissionCodeList);
                 }
                 commit(appConst.permission.motaions.SET_ROUTERS, routers);
