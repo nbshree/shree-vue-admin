@@ -1,208 +1,203 @@
 <template>
-  <div class="login-page">
-    <langselect class="lang" />
-    <el-tooltip class="svg-github" effect="dark" content="Fork Me" placement="bottom">
-      <a href="https://github.com/nbshree/vue20191009" target="_blank"><icon name="github" :scale="2.5"></icon></a>
-    </el-tooltip>
+    <div class="login-page">
+        <langselect class="lang" />
+        <el-tooltip class="svg-github" effect="dark" content="Fork Me" placement="bottom">
+            <a href="https://github.com/nbshree/vue20191009" target="_blank"><icon name="github" :scale="2.5"></icon></a>
+        </el-tooltip>
 
-    <div class="login-wrap">
-      <el-col :class="translateLeft" :span="10">
+        <div class="login-wrap">
+            <el-col :class="translateLeft" :span="10">
+                <div v-show="notforget">
+                    <div class="logo">
+                        <icon name="loginLogo" :scale="8" class="loginLogo"></icon>
+                        <div class="title">
+                            <a>
+                                <span>{{ $t('login.titlePart1') }}</span
+                                ><span class="subtitle">{{ $t('login.titlePart2') }}</span>
+                            </a>
+                        </div>
+                    </div>
 
-        <div v-show="notforget">
-          <div class="logo">
-            <icon name="loginLogo" :scale="8" class="loginLogo"></icon>
-            <div class="title">
-              <a>
-                <span>{{$t('login.titlePart1')}}</span><span class="subtitle">{{$t('login.titlePart2')}}</span>
-              </a>
-            </div>
-          </div>
+                    <div class="login-form">
+                        <el-form :model="ruleForm" :rules="rules" ref="ruleForm">
+                            <el-form-item prop="username">
+                                <el-input :placeholder="$t('login.userplaceholder')" v-model="ruleForm.username"></el-input>
+                            </el-form-item>
+                            <el-form-item prop="password">
+                                <el-input :placeholder="$t('login.pwdplaceholder')" type="password" v-model="ruleForm.password"></el-input>
+                            </el-form-item>
+                            <el-form-item class="btn">
+                                <el-button :loading="loading" type="primary" @click="handleLogin('ruleForm')">{{ $t('login.btn') }}</el-button>
+                            </el-form-item>
+                        </el-form>
+                    </div>
 
-          <div class="login-form">
-            <el-form :model="ruleForm" :rules="rules" ref="ruleForm">
-              <el-form-item prop="username">
-                <el-input :placeholder="$t('login.userplaceholder')" v-model="ruleForm.username"></el-input>
-              </el-form-item>
-              <el-form-item prop="password">
-                <el-input :placeholder="$t('login.pwdplaceholder')" type="password" v-model="ruleForm.password"></el-input>
-              </el-form-item>
-              <el-form-item class="btn">
-                <el-button :loading="loading" type="primary" @click="handleLogin('ruleForm')">{{$t('login.btn')}}</el-button>
-              </el-form-item>
-            </el-form>
-          </div>
+                    <div class="login-footer">
+                        <el-col :span="12">
+                            <el-checkbox v-model="remember" name="type">{{ $t('login.remember') }}</el-checkbox>
+                        </el-col>
+                        <el-col class="forgetpwd" :span="12">
+                            <span @click="wrapSwitch(false)">{{ $t('login.forgetpwd') }}</span>
+                        </el-col>
+                    </div>
+                </div>
 
-          <div class="login-footer">
-            <el-col :span="12">
-              <el-checkbox v-model="remember" name="type">{{$t('login.remember')}}</el-checkbox>
+                <div v-show="!notforget">
+                    <div class="title forgetwrap-title">
+                        <a> <span>VUE-SHREE</span><span class="subtitle">ADMIN</span> </a>
+                    </div>
+                    <div class="forget-form">
+                        <el-form :model="forgetForm" ref="forgetRuleForm">
+                            <el-form-item>
+                                <el-input :placeholder="$t('login.forget_email')" v-model="forgetForm.email"></el-input>
+                            </el-form-item>
+                            <el-form-item>
+                                <el-input :placeholder="$t('login.forget_code')" v-model="forgetForm.code"></el-input>
+                            </el-form-item>
+                            <el-form-item>
+                                <el-input :placeholder="$t('login.forget_passwrd')" type="password" v-model="forgetForm.newPassword"></el-input>
+                            </el-form-item>
+                            <el-form-item>
+                                <el-input :placeholder="$t('login.confirm_passwrd')" type="password" v-model="forgetForm.confirmPassword"></el-input>
+                            </el-form-item>
+                            <el-form-item class="btn">
+                                <el-row :gutter="20">
+                                    <el-col :span="12">
+                                        <el-button @click="wrapSwitch(true)" type="primary">{{ $t('login.forget_back') }}</el-button>
+                                    </el-col>
+                                    <el-col :span="12">
+                                        <el-button @click="forgetHandle" type="primary">{{ $t('login.forget_btn') }}</el-button>
+                                    </el-col>
+                                </el-row>
+                            </el-form-item>
+                        </el-form>
+                    </div>
+                </div>
             </el-col>
-            <el-col class="forgetpwd" :span="12">
-              <span @click="wrapSwitch(false)">{{$t('login.forgetpwd')}}</span>
+
+            <el-col :class="translateRight" :span="14">
+                <div class="wallpaper"></div>
             </el-col>
-          </div>
         </div>
-
-        <div v-show="!notforget">
-          <div class="title forgetwrap-title">
-            <a>
-              <span>VUE-SHREE</span><span class="subtitle">ADMIN</span>
-            </a>
-          </div>
-          <div class="forget-form">
-            <el-form :model="forgetForm" ref="forgetRuleForm">
-              <el-form-item>
-                <el-input :placeholder="$t('login.forget_email')" v-model="forgetForm.email"></el-input>
-              </el-form-item>
-              <el-form-item>
-                <el-input :placeholder="$t('login.forget_code')" v-model="forgetForm.code"></el-input>
-              </el-form-item>
-              <el-form-item>
-                <el-input :placeholder="$t('login.forget_passwrd')" type="password" v-model="forgetForm.newPassword"></el-input>
-              </el-form-item>
-              <el-form-item>
-                <el-input :placeholder="$t('login.confirm_passwrd')" type="password" v-model="forgetForm.confirmPassword"></el-input>
-              </el-form-item>
-              <el-form-item class="btn">
-                <el-row :gutter="20">
-                  <el-col :span="12">
-                    <el-button @click="wrapSwitch(true)" type="primary">{{$t('login.forget_back')}}</el-button>
-                  </el-col>
-                  <el-col :span="12">
-                    <el-button @click="forgetHandle" type="primary">{{$t('login.forget_btn')}}</el-button>
-                  </el-col>
-                </el-row>
-              </el-form-item>
-            </el-form>
-          </div>
-        </div>
-
-      </el-col>
-
-      <el-col :class="translateRight" :span="14">
-        <div class="wallpaper" ></div>
-      </el-col>
     </div>
-  </div>
 </template>
 
 <script>
-import langselect from '@/components/langselect'
-import storage from '@/utils/storage'
+import langselect from '@/components/langselect';
+import storage from '@/utils/storage';
 
 export default {
-  name: 'login',
-  components: {
-    langselect
-  },
-  mounted() {
-    this.$notify({
-      title: '登陆提示',
-      message: '用户名 admin 密码随意输入',
-      position: 'top-left',
-      duration: 0
-    })
-  },
-  data() {
-    return {
-      lang: this.$store.state.app.language,
-      ruleForm: {
-        username: storage.get('loginUser') || 'admin',
-        password: ''
-      },
-      rules: {
-        username: [
-          {
-            required: true,
-            message: this.$t('login.valid.userexist'),
-            trigger: 'change'
-          }
-        ],
-        password: [
-          {
-            required: true,
-            message: this.$t('login.valid.pwdexist'),
-            trigger: 'change'
-          }
-        ]
-      },
-      remember: true,
-      loading: false,
-      switchLeft: false,
-      switchRight: false,
-      notforget: true,
-      forgetForm: {
-        email: '',
-        newPassword: '',
-        confirmPassword: ''
-      }
-    }
-  },
-  computed: {
-    translateLeft() {
-      return {
-        'translate-left': true,
-        'login-col': true,
-        'switch-left': this.switchLeft
-      }
+    name: 'login',
+    components: {
+        langselect
     },
-    translateRight() {
-      return {
-        'translate-right': true,
-        'login-col': true,
-        'switch-right': this.switchLeft
-      }
-    }
-  },
-  methods: {
-    wrapSwitch(state) {
-      this.switchLeft = !this.switchLeft
-      this.switchRight = !this.switchRight
-      setTimeout(() => {
-        this.notforget = state
-        this.$refs['ruleForm'].resetFields()
-        // this.$refs['forgetRuleForm'].resetFields()
-      }, 300)
+    mounted() {
+        this.$notify({
+            title: '登陆提示',
+            message: '用户名 admin/editor 密码随意输入',
+            position: 'top-left',
+            duration: 0
+        });
     },
-    handleLogin(formName) {
-      this.loading = true
-      this.$refs[formName].validate(async valid => {
-        if (valid) {
-          try {
-            let { username, password } = this.ruleForm
-            this.remember
-              ? storage.set('loginUser', username)
-              : storage.remove('loginUser', username)
-            const response = await this.$store.dispatch('login', {
-              username: username.trim(),
-              password: password
-            })
-            this.loading = false
-            if (response.data) {
-              this.$notify.closeAll()
-              this.$router.push({ path: '/' })
-            } else {
-              this.$message({
-                message: response.message,
-                type: 'error',
-                duration: 10000,
-                showClose: true
-              })
+    data() {
+        return {
+            lang: this.$store.state.app.language,
+            ruleForm: {
+                username: storage.get('loginUser') || 'admin',
+                password: ''
+            },
+            rules: {
+                username: [
+                    {
+                        required: true,
+                        message: this.$t('login.valid.userexist'),
+                        trigger: 'change'
+                    }
+                ],
+                password: [
+                    {
+                        required: true,
+                        message: this.$t('login.valid.pwdexist'),
+                        trigger: 'change'
+                    }
+                ]
+            },
+            remember: true,
+            loading: false,
+            switchLeft: false,
+            switchRight: false,
+            notforget: true,
+            forgetForm: {
+                email: '',
+                newPassword: '',
+                confirmPassword: ''
             }
-          } catch (error) {
-            throw new Error(error)
-          }
-        } else {
-          this.loading = false
-          this.$message.error(this.$t('login.validfaild'))
-        }
-      })
+        };
     },
-    forgetHandle() {
-      this.$message.success(this.$t('login.pwdChanged'))
-      this.wrapSwitch(true)
+    computed: {
+        translateLeft() {
+            return {
+                'translate-left': true,
+                'login-col': true,
+                'switch-left': this.switchLeft
+            };
+        },
+        translateRight() {
+            return {
+                'translate-right': true,
+                'login-col': true,
+                'switch-right': this.switchLeft
+            };
+        }
+    },
+    methods: {
+        wrapSwitch(state) {
+            this.switchLeft = !this.switchLeft;
+            this.switchRight = !this.switchRight;
+            setTimeout(() => {
+                this.notforget = state;
+                this.$refs['ruleForm'].resetFields();
+                // this.$refs['forgetRuleForm'].resetFields()
+            }, 300);
+        },
+        handleLogin(formName) {
+            this.loading = true;
+            this.$refs[formName].validate(async (valid) => {
+                if (valid) {
+                    try {
+                        let { username, password } = this.ruleForm;
+                        this.remember ? storage.set('loginUser', username) : storage.remove('loginUser', username);
+                        const response = await this.$store.dispatch('login', {
+                            username: username.trim(),
+                            password: password
+                        });
+                        this.loading = false;
+                        if (response.data) {
+                            this.$notify.closeAll();
+                            this.$router.push({ path: '/' });
+                        } else {
+                            this.$message({
+                                message: response.message,
+                                type: 'error',
+                                duration: 10000,
+                                showClose: true
+                            });
+                        }
+                    } catch (error) {
+                        throw new Error(error);
+                    }
+                } else {
+                    this.loading = false;
+                    this.$message.error(this.$t('login.validfaild'));
+                }
+            });
+        },
+        forgetHandle() {
+            this.$message.success(this.$t('login.pwdChanged'));
+            this.wrapSwitch(true);
+        }
     }
-  }
-}
+};
 </script>
 
 <style lang="stylus">

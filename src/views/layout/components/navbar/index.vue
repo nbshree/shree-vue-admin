@@ -12,12 +12,12 @@
 
         <div class="middle-area">
             <div class="middle-area__cgwrap" @click="handleSwitchNavbar">
-              <icon class="category-icon" name="category" :scale="2.8"></icon>
+                <icon class="category-icon" name="category" :scale="2.8"></icon>
             </div>
 
             <div class="middle-area__msglist">
                 <breadcrumb />
-<!--                <seamless-list :messageList="messageList" :singleHeight="60" :limitMoveNum="2" />-->
+                <!--                <seamless-list :messageList="messageList" :singleHeight="60" :limitMoveNum="2" />-->
             </div>
         </div>
 

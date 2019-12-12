@@ -1,44 +1,47 @@
 <template>
-  <div class="lock-wrap">
-    <el-carousel :height="carouselHeight" indicator-position="none">
-      <el-carousel-item v-for="item in 4" :key="item">
-        <div>{{$t('lock.topImg')}}</div>
-      </el-carousel-item>
-    </el-carousel>
-    <div class="lock-container">
-      <div class="lock-container__box">
-        <h1><span>{{$t('app.unlock')}} {{$t('login.edenPart1')}}</span><span class="subtitle">{{$t('login.edenPart2')}}</span></h1>
-        <el-input v-model="pwd" placeholder="Enter Password"></el-input>
-        <el-button class="btn" @click="unlock">unlock</el-button>
-      </div>
+    <div class="lock-wrap">
+        <el-carousel :height="carouselHeight" indicator-position="none">
+            <el-carousel-item v-for="item in 4" :key="item">
+                <div>{{ $t('lock.topImg') }}</div>
+            </el-carousel-item>
+        </el-carousel>
+        <div class="lock-container">
+            <div class="lock-container__box">
+                <h1>
+                    <span>{{ $t('app.unlock') }} {{ $t('login.edenPart1') }}</span
+                    ><span class="subtitle">{{ $t('login.edenPart2') }}</span>
+                </h1>
+                <el-input v-model="pwd" placeholder="Enter Password"></el-input>
+                <el-button class="btn" @click="unlock">unlock</el-button>
+            </div>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
 export default {
-  name: 'lock',
-  data() {
-    return {
-      carouselHeight: '',
-      pwd: ''
+    name: 'lock',
+    data() {
+        return {
+            carouselHeight: '',
+            pwd: ''
+        };
+    },
+    created() {
+        this.carouselHeight = `${window.innerHeight / 2}px`;
+    },
+    methods: {
+        unlock() {
+            if (this.pwd === '') {
+                this.$message.error('Please Enter Password!');
+            } else {
+                this.$message.success(this.$t('lock.unlock'));
+                this.$store.dispatch('setLockState', 'unlock');
+                this.$router.push('/');
+            }
+        }
     }
-  },
-  created() {
-    this.carouselHeight = `${window.innerHeight / 2}px`
-  },
-  methods: {
-    unlock() {
-      if (this.pwd === '') {
-        this.$message.error('Please Enter Password!')
-      } else {
-        this.$message.success(this.$t('lock.unlock'))
-        this.$store.dispatch('setLockState', 'unlock')
-        this.$router.push('/')
-      }
-    }
-  }
-}
+};
 </script>
 
 <style lang="stylus" scoped>

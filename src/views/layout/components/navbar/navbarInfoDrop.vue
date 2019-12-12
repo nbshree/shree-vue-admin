@@ -15,11 +15,13 @@
 </template>
 
 <script>
+import { getSession } from '@/utils/session';
+
 export default {
     name: 'navbarInfoDrop',
     data() {
         return {
-            username: this.$store.state.user.userName,
+            username: JSON.parse(getSession()).userName,
             avatarUrl: this.$store.state.user.avatar
         };
     },

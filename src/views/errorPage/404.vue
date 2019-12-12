@@ -11,15 +11,15 @@
 
 <script>
 export default {
-  name: 'page404',
-  methods: {
-    returnPrevPage () {
-      this.$router.push({
-        path: '/'
-      })
+    name: 'page404',
+    methods: {
+        returnPrevPage() {
+            this.$router.push({
+                path: '/'
+            });
+        }
     }
-  }
-}
+};
 </script>
 
 <style lang="stylus" scoped>

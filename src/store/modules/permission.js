@@ -1,7 +1,7 @@
 import { constantRouterMap } from '@/router';
 import { asyncRouterMap } from '@/router/asyncRouterMap';
-import getters from '../getters';
 import appConst from '../appConst';
+import store from '@/store';
 
 const routeAuthentication = (route, permissionCodeList) => {
     if (route.meta && route.meta.permission) {
@@ -55,9 +55,11 @@ const permission = {
             return new Promise((resolve) => {
                 let routers = null;
                 // 如果是Debug模式则直接返回所有路由, 否则进行路由过滤
-                if (getters.debugMode) {
+                if (store.getters.debugMode) {
                     routers = asyncRouterMap;
                 } else {
+                  console.log(asyncRouterMap);
+                  console.log(permissionCodeList);
                     routers = filterAsyncRouter(asyncRouterMap, permissionCodeList);
                 }
                 commit(appConst.permission.motaions.SET_ROUTERS, routers);

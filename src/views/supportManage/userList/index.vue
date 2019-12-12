@@ -1,16 +1,16 @@
 <template>
-  <div class="page-container">
-    {{msg}}
-  </div>
+    <div class="page-container">
+        {{ msg }}
+    </div>
 </template>
 
 <script>
-  export default {
+export default {
     name: 'userList',
-    data () {
-      return {
-        msg: 'userList'
-      }
-    },
-  }
+    data() {
+        return {
+            msg: 'userList'
+        };
+    }
+};
 </script>
