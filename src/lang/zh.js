@@ -15,7 +15,9 @@ export default {
         projectList: '项目列表',
         esealFirmware: '智能锁固件',
         profile: '个人中心',
-        panels: '卡片展示'
+        panels: '卡片展示',
+        dynamicTable:'动态表格',
+        complexTable:'综合功能表格',
     },
     app: {
         switchlang: '切换语言成功',

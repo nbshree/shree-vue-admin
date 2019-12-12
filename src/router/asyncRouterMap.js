@@ -43,27 +43,27 @@ export const asyncRouterMap = [
     name: 'table',
     meta: {
       title: 'table',
-      icon: 'comp'
+      icon: 'table'
     },
     redirect: 'app/list',
     children: [
       {
         path: 'table/dynamic',
         component: _import('table/dynamic-table/index'),
-        name: 'dynamic-table',
+        name: 'dynamicTable',
         meta: {
           title: '动态表格',
-          icon: 'comp',
+          // icon: 'table',
           permission: 'supportManage:appList:index'
         }
       },
       {
         path: 'table/complex',
         component: _import('table/complex-table/index'),
-        name: 'complex-table',
+        name: 'complexTable',
         meta: {
           title: '综合功能表格',
-          icon: 'comp',
+          // icon: 'comp',
           permission: 'supportManage:appList:index'
         }
       }
