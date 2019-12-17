@@ -290,6 +290,7 @@ box-style(bg)
   background white
 
 .dashboard-wrap
+  padding: 20px;
   margin-top: -15px
   .box1
     box-style(#41b883)
