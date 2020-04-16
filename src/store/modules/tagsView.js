@@ -18,9 +18,7 @@ const tagsView = {
                 title: route.meta.title || 'empty-name',
                 path: route.path
             });
-            if (route.cache) {
-                state.cachedViews.push(route.name);
-            }
+            state.cachedViews.push(route.name);
             setViews(state.visitedViews);
         },
         [appConst.tagsview.motaions.REMOVE_VISITED_TAG]: (state, tag) => {
