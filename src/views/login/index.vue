@@ -166,7 +166,7 @@ export default {
                 if (valid) {
                     try {
                         let { username, password } = this.ruleForm;
-                        this.remember ? storage.set('loginUser', username) : storage.remove('loginUser', username);
+                        this.remember ? storage.set('loginUser', username) : storage.remove('loginUser');
                         const response = await this.$store.dispatch('login', {
                             username: username.trim(),
                             password: password
