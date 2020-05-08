@@ -7,6 +7,7 @@ import app from './modules/app';
 import permission from './modules/permission';
 import user from './modules/user';
 import tagsView from './modules/tagsView';
+import test from './modules/test';
 import getters from './getters';
 
 const store = new Vuex.Store({
@@ -14,7 +15,8 @@ const store = new Vuex.Store({
         app,
         permission,
         user,
-        tagsView
+        tagsView,
+        test
     },
     getters,
     strict: false
