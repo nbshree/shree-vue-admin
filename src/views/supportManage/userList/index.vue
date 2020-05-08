@@ -37,7 +37,7 @@
       getMsg(){
         axios.get('http://shree.top/api/api/getUserByName',{
           params:{
-            userName:this.userName
+            "userName":this.username
           }
         }).then((response) => {
           console.log(response);
@@ -47,7 +47,7 @@
     data() {
       return {
         msg: 'userList',
-        username:""
+        username:"shree"
       };
     }
   };
