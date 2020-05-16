@@ -1,7 +1,9 @@
 <template>
   <div class="page-container">
     {{ msg }}
-<!--    <button @click="login">登陆</button>-->
+    <button @click="getData">getData</button>
+    <button @click="getOptData">getOptData</button>
+    <button @click="reset">reset</button>
 <!--    <button @click="onClick">获取用户信息</button>-->
 <!--    <button @click="logoff">退出</button>-->
     <p>{{name}}</p>
@@ -37,6 +39,16 @@ export default {
           type: 'error'
         })
       }
+    },
+    getData(){
+      console.log(this.$data);
+    },
+    getOptData(){
+      console.log(this.$options);
+      console.log(this.$options.data());
+    },
+    reset(){
+      Object.assign(this.$data,this.$options.data())
     }
   },
   data() {

@@ -4,7 +4,7 @@ import * as loginAuth from './session';
 import * as tools from './tools';
 
 const http = axios.create({
-    baseURL: '',
+    baseURL: 'http://api.shree.top/',
     timeout: 30000
 });
 
