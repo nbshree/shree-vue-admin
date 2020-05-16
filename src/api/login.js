@@ -5,6 +5,7 @@ export function loginbyUser(username, password) {
         username,
         password
     };
+    console.log(data)
     return http({
         url: '/login/login',
         method: 'post',

@@ -45,6 +45,12 @@ export const constantRouterMap = [
     hidden: true
   },
   {
+    path: '/adream',
+    component: _import('adream/index'),
+    name: 'adream',
+    hidden: true
+  },
+  {
     path: '',
     component: Layout,
     redirect: 'dashboard',

@@ -174,7 +174,12 @@ export default {
                         this.loading = false;
                         if (response.data) {
                             this.$notify.closeAll();
-                            this.$router.push({ path: '/' });
+                          let routerPath = '/';
+                          if (response.data.userName === 'Adream') {
+                            routerPath = '/adream';
+                          }
+                          this.$router.push({ path: routerPath });
+                            // this.$router.push({ path: '/' });
                         } else {
                             this.$message({
                                 message: response.message,
