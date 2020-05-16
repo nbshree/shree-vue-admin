@@ -1,9 +1,25 @@
 <template>
   <div class="lock-wrap">
     <el-carousel :height="carouselHeight" indicator-position="none" :autoplay="true">
-      <el-carousel-item v-for="(item,index) in imgList" :key="index">
-        <img style="height: 100%" :src="item" alt="">
-      </el-carousel-item>
+      <el-carousel-item><img style="height: 100%" src="../../assets/images/adream/1.jpg" alt=""></el-carousel-item>
+      <el-carousel-item><img style="height: 100%" src="../../assets/images/adream/2.jpg" alt=""></el-carousel-item>
+      <el-carousel-item><img style="height: 100%" src="../../assets/images/adream/3.jpg" alt=""></el-carousel-item>
+      <el-carousel-item><img style="height: 100%" src="../../assets/images/adream/4.jpg" alt=""></el-carousel-item>
+      <el-carousel-item><img style="height: 100%" src="../../assets/images/adream/5.jpg" alt=""></el-carousel-item>
+      <el-carousel-item><img style="height: 100%" src="../../assets/images/adream/6.jpg" alt=""></el-carousel-item>
+      <el-carousel-item><img style="height: 100%" src="../../assets/images/adream/7.jpg" alt=""></el-carousel-item>
+      <el-carousel-item><img style="height: 100%" src="../../assets/images/adream/8.jpg" alt=""></el-carousel-item>
+      <el-carousel-item><img style="height: 100%" src="../../assets/images/adream/9.jpg" alt=""></el-carousel-item>
+      <el-carousel-item><img style="height: 100%" src="../../assets/images/adream/10.jpg" alt=""></el-carousel-item>
+      <el-carousel-item><img style="height: 100%" src="../../assets/images/adream/11.jpg" alt=""></el-carousel-item>
+      <el-carousel-item><img style="height: 100%" src="../../assets/images/adream/12.jpg" alt=""></el-carousel-item>
+      <el-carousel-item><img style="height: 100%" src="../../assets/images/adream/13.jpg" alt=""></el-carousel-item>
+<!--      <el-carousel-item v-for="index in 4" :key="index">-->
+<!--        <img style="height: 100%" :src="'../../assets/images/adream/'+index+'.jpg'" alt="">-->
+<!--      </el-carousel-item>-->
+<!--      <el-carousel-item v-for="(item,index) in imgList" :key="index">-->
+<!--        <img style="height: 100%" :src="item" alt="">-->
+<!--      </el-carousel-item>-->
     </el-carousel>
   </div>
 </template>
