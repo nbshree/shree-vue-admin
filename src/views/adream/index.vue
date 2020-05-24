@@ -49,7 +49,7 @@
     },
     created() {
       this.carouselHeight = `${window.innerHeight}px`;
-      this.initImg();
+      // this.initImg();
     },
     methods: {
       initImg() {
