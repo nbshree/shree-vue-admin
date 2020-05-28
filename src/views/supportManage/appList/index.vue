@@ -13,6 +13,24 @@
     </p>
     <input v-model="gameName"></input>
     <button @click="addGame">add</button>
+    <anchored-heading :level="5">
+<!--      <slot>213</slot>-->
+<!--      <slot name="1">1</slot>-->
+      <template v-slot:header>
+        <h1>1</h1>
+      </template>
+      <template v-slot:default>
+        <h1>Here might be a page title</h1>
+      </template>
+    </anchored-heading>
+    <anchored-heading-second :level="1">
+      <!--      <slot>213</slot>-->
+      <!--      <slot name="1">1</slot>-->
+      <template v-slot:header>
+        <h1>1</h1>
+      </template>
+      <template v-slot:default>Here might be a page title</template>
+    </anchored-heading-second>
   </div>
 </template>
 

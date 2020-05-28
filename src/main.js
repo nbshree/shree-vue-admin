@@ -8,6 +8,8 @@ import App from './App.vue';
 import router from '@/router';
 import '@/router/routerControl';
 import store from './store';
+import './vNode/first';
+import './vNode/second';
 import '@/assets/theme/element-#41B883/index.css';
 import '@/assets/styl/index';
 import '@/mock';
